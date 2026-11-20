@@ -1,0 +1,151 @@
+[2026-11-20T02:03:26.214+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-11-20T02:03:26.219+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Medium_to_Pinecone.generate_embeddings_and_upsert manual__2026-11-20T02:02:55+00:00 [queued]>
+[2026-11-20T02:03:26.221+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Medium_to_Pinecone.generate_embeddings_and_upsert manual__2026-11-20T02:02:55+00:00 [queued]>
+[2026-11-20T02:03:26.221+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 2
+[2026-11-20T02:03:26.225+0000] {taskinstance.py:2890} INFO - Executing <Task(_PythonDecoratedOperator): generate_embeddings_and_upsert> on 2026-11-20 02:02:55+00:00
+[2026-11-20T02:03:26.231+0000] {standard_task_runner.py:72} INFO - Started process 1979 to run task
+[2026-11-20T02:03:26.233+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'Medium_to_Pinecone', 'generate_embeddings_and_upsert', 'manual__2026-11-20T02:02:55+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/build_pinecone_search.py', '--cfg-path', '/tmp/tmpgeya05e4']
+[2026-11-20T02:03:26.234+0000] {standard_task_runner.py:105} INFO - Job 16: Subtask generate_embeddings_and_upsert
+[2026-11-20T02:03:26.249+0000] {task_command.py:467} INFO - Running <TaskInstance: Medium_to_Pinecone.generate_embeddings_and_upsert manual__2026-11-20T02:02:55+00:00 [running]> on host 2e679be75c18
+[2026-11-20T02:03:26.269+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='Medium_to_Pinecone' AIRFLOW_CTX_TASK_ID='generate_embeddings_and_upsert' AIRFLOW_CTX_EXECUTION_DATE='2026-11-20T02:02:55+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-11-20T02:02:55+00:00'
+[2026-11-20T02:03:26.270+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2026-11-20T02:03:26.398+0000] {_client.py:1079} INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+[2026-11-20T02:03:26.403+0000] {model.py:1252} INFO - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+[2026-11-20T02:03:26.473+0000] {logging_mixin.py:190} WARNING - Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]
+[2026-11-20T02:03:26.481+0000] {logging_mixin.py:190} WARNING - Loading weights: 100%|##########| 103/103 [00:00<00:00, 12414.53it/s]
+[2026-11-20T02:03:26.564+0000] {_client.py:1079} INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+[2026-11-20T02:03:26.648+0000] {_client.py:1079} INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+[2026-11-20T02:03:26.750+0000] {_client.py:1079} INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+[2026-11-20T02:03:26.751+0000] {_http.py:1023} WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[2026-11-20T02:03:26.797+0000] {indexes.py:233} INFO - Describing index 'semantic-search-fast'
+[2026-11-20T02:03:26.962+0000] {_client.py:1026} INFO - HTTP Request: GET https://api.pinecone.io/indexes/semantic-search-fast "HTTP/1.1 200 OK"
+[2026-11-20T02:03:26.983+0000] {__init__.py:208} INFO - Index client created for host https://semantic-search-fast-15so53w.svc.aped-4627-b74a.pinecone.io
+[2026-11-20T02:03:26.987+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:27.163+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  5.69it/s]
+[2026-11-20T02:03:27.289+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00, 10.87it/s]
+[2026-11-20T02:03:27.319+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 12.08it/s]
+[2026-11-20T02:03:27.323+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:28.454+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:28.615+0000] {logging_mixin.py:190} WARNING - Batches:  50%|#####     | 2/4 [00:00<00:00, 12.59it/s]
+[2026-11-20T02:03:28.701+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 16.28it/s]
+[2026-11-20T02:03:28.703+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:29.091+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:29.200+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  9.19it/s]
+[2026-11-20T02:03:29.323+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00, 13.59it/s]
+[2026-11-20T02:03:29.351+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 15.40it/s]
+[2026-11-20T02:03:29.353+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:29.643+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:29.812+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  5.95it/s]
+[2026-11-20T02:03:29.969+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00,  9.83it/s]
+[2026-11-20T02:03:30.000+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 11.22it/s]
+[2026-11-20T02:03:30.003+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:30.321+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:30.468+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  6.84it/s]
+[2026-11-20T02:03:30.593+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00, 11.88it/s]
+[2026-11-20T02:03:30.623+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 13.31it/s]
+[2026-11-20T02:03:30.624+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:30.905+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:31.033+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  7.86it/s]
+[2026-11-20T02:03:31.161+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00, 12.44it/s]
+[2026-11-20T02:03:31.190+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 14.11it/s]
+[2026-11-20T02:03:31.191+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:31.472+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:31.628+0000] {logging_mixin.py:190} WARNING - Batches:  50%|#####     | 2/4 [00:00<00:00, 12.87it/s]
+[2026-11-20T02:03:31.717+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 16.37it/s]
+[2026-11-20T02:03:31.719+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:31.999+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:32.240+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  4.17it/s]
+[2026-11-20T02:03:32.377+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00,  8.84it/s]
+[2026-11-20T02:03:32.407+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00,  9.83it/s]
+[2026-11-20T02:03:32.408+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:32.660+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:32.840+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  5.56it/s]
+[2026-11-20T02:03:32.974+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00, 10.40it/s]
+[2026-11-20T02:03:33.006+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 11.59it/s]
+[2026-11-20T02:03:33.008+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:33.270+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:33.430+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  6.29it/s]
+[2026-11-20T02:03:33.561+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00, 11.13it/s]
+[2026-11-20T02:03:33.590+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 12.53it/s]
+[2026-11-20T02:03:33.592+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:33.846+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:33.956+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  9.10it/s]
+[2026-11-20T02:03:34.099+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00, 12.29it/s]
+[2026-11-20T02:03:34.129+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 14.13it/s]
+[2026-11-20T02:03:34.131+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:34.385+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:34.497+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  9.08it/s]
+[2026-11-20T02:03:34.621+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00, 13.44it/s]
+[2026-11-20T02:03:34.649+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 15.25it/s]
+[2026-11-20T02:03:34.651+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:34.910+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:35.025+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  8.76it/s]
+[2026-11-20T02:03:35.160+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00, 12.53it/s]
+[2026-11-20T02:03:35.193+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 14.17it/s]
+[2026-11-20T02:03:35.194+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:35.450+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:35.586+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  7.36it/s]
+[2026-11-20T02:03:35.714+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00, 12.14it/s]
+[2026-11-20T02:03:35.741+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 13.76it/s]
+[2026-11-20T02:03:35.743+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:35.999+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:36.119+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  8.38it/s]
+[2026-11-20T02:03:36.240+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00, 13.14it/s]
+[2026-11-20T02:03:36.269+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 14.82it/s]
+[2026-11-20T02:03:36.271+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:36.611+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:36.776+0000] {logging_mixin.py:190} WARNING - Batches:  50%|#####     | 2/4 [00:00<00:00, 12.17it/s]
+[2026-11-20T02:03:36.867+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 15.65it/s]
+[2026-11-20T02:03:36.869+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:37.134+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:37.292+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  6.37it/s]
+[2026-11-20T02:03:37.412+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00, 11.75it/s]
+[2026-11-20T02:03:37.439+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 13.14it/s]
+[2026-11-20T02:03:37.441+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:37.693+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:37.870+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  5.66it/s]
+[2026-11-20T02:03:38.023+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00,  9.76it/s]
+[2026-11-20T02:03:38.055+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 11.05it/s]
+[2026-11-20T02:03:38.058+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:38.326+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:38.502+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  5.74it/s]
+[2026-11-20T02:03:38.639+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00, 10.39it/s]
+[2026-11-20T02:03:38.674+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 11.54it/s]
+[2026-11-20T02:03:38.676+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:38.957+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:39.060+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  9.89it/s]
+[2026-11-20T02:03:39.188+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00, 13.57it/s]
+[2026-11-20T02:03:39.227+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 14.93it/s]
+[2026-11-20T02:03:39.228+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:39.490+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:39.659+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  5.93it/s]
+[2026-11-20T02:03:39.819+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00,  9.72it/s]
+[2026-11-20T02:03:39.854+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 11.02it/s]
+[2026-11-20T02:03:39.858+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:40.124+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:40.315+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  5.25it/s]
+[2026-11-20T02:03:40.464+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00,  9.56it/s]
+[2026-11-20T02:03:40.494+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 10.81it/s]
+[2026-11-20T02:03:40.496+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:40.807+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:41.059+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  3.99it/s]
+[2026-11-20T02:03:41.221+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00,  7.99it/s]
+[2026-11-20T02:03:41.249+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00,  9.06it/s]
+[2026-11-20T02:03:41.251+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:41.596+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:41.717+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  8.34it/s]
+[2026-11-20T02:03:41.836+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00, 13.30it/s]
+[2026-11-20T02:03:41.864+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 14.98it/s]
+[2026-11-20T02:03:41.866+0000] {__init__.py:426} INFO - Upserting 100 vectors into namespace ''
+[2026-11-20T02:03:42.138+0000] {logging_mixin.py:190} WARNING - Batches:   0%|          | 0/4 [00:00<?, ?it/s]
+[2026-11-20T02:03:42.254+0000] {logging_mixin.py:190} WARNING - Batches:  25%|##5       | 1/4 [00:00<00:00,  8.64it/s]
+[2026-11-20T02:03:42.380+0000] {logging_mixin.py:190} WARNING - Batches:  75%|#######5  | 3/4 [00:00<00:00, 13.08it/s]
+[2026-11-20T02:03:42.407+0000] {logging_mixin.py:190} WARNING - Batches: 100%|##########| 4/4 [00:00<00:00, 14.90it/s]
+[2026-11-20T02:03:42.409+0000] {__init__.py:426} INFO - Upserting 98 vectors into namespace ''
+[2026-11-20T02:03:42.674+0000] {logging_mixin.py:190} INFO - Successfully upserted 2498 records to Pinecone
+[2026-11-20T02:03:42.683+0000] {python.py:240} INFO - Done. Returned value was: semantic-search-fast
+[2026-11-20T02:03:42.703+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2026-11-20T02:03:42.703+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=Medium_to_Pinecone, task_id=generate_embeddings_and_upsert, run_id=manual__2026-11-20T02:02:55+00:00, execution_date=20261120T020255, start_date=20261120T020326, end_date=20261120T020342
+[2026-11-20T02:03:42.742+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-11-20T02:03:42.753+0000] {taskinstance.py:3901} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-11-20T02:03:42.755+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
